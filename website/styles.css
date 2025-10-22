@@ -107,19 +107,21 @@ main {
   text-align: center;
   font-family:"Roboto", sans-serif;
   margin: 20px;
-  padding: 20px;
+  padding: 30px;
   width: 250px;
   float: left;
+
 }
 .box { /* for teampage */
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   border: 2px solid black;
   margin: 20px;
-  padding: 20px;
+  padding: 10px;
   width: 1250px;
   text-align: center;
   font-family:"Roboto", sans-serif;
    float: left;
+
  
 }
