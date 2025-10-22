@@ -59,7 +59,7 @@ main {
 }
 
 .text-main{
-  
+  width: 100;
 }
 
 .search-bar{
@@ -98,4 +98,28 @@ main {
   height: 60px;
   background: #ddf555;
   cursor: pointer;
+}
+ .team { /* for teampage */
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 2px solid black;
+  border-radius: 10px;
+  text-align: center;
+  font-family:"Roboto", sans-serif;
+  margin: 20px;
+  padding: 20px;
+  width: 250px;
+  float: left;
+}
+.box { /* for teampage */
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px;
+  width: 1250px;
+  text-align: center;
+  font-family:"Roboto", sans-serif;
+   float: left;
+ 
 }
