@@ -1,20 +1,47 @@
 html {
     background-color: rgb(253, 251, 251);
-    font-family: "Roboto", sans-serif;
-}
+    font-family: "Space Mono", monospace;
+} 
 body {
   margin: auto;
   padding: 0;
 }
-header {
+
+.layout {
+  width: 100%;
+
+  display: grid;
+  grid:
+    "header header header" auto
+    "leftSide body rightSide" 1fr
+    "footer footer footer" auto
+    / auto 1fr auto;
+  gap: 8px;
+}
+.header {
+    grid-area: header; 
     overflow: hidden;
     position: fixed;
     width: 100%; 
     height: 60px;
     padding: 2rem 1rem;
     background: linear-gradient(180deg, #302e2e, #190606); 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    color: #ffffff;
+    font-family: "Space Mono";
+    font-size: 19px;
+    line-height: 40px;
+    font-weight: 700;
 }
+
+.leftSide { grid-area: leftSide; }
+
+.body { grid-area: body; }
+
+.rightSide { grid-area: rightSide; }
+
+.footer { grid-area: footer; }
+
 nav { 
     margin: auto;    /* center horizontally */
     padding: 0 10rem; 
@@ -37,7 +64,7 @@ nav a {
   transition: all 0.3s ease;
 }
 nav a:hover {
-  background-color: yellow;
+  background-color: #ddf555;
   color: black;
   transform: scale(1.05);
 }
@@ -47,7 +74,8 @@ nav a.active {
 main {
     padding: 1rem;
   }
-/* style for algorithm-page*/
+
+  /* style for algorithm-page*/
 
 .box1 {
       border: 2px solid #333;
@@ -58,8 +86,6 @@ main {
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       margin: 40px auto;
     }
-
-
 
 .container{
   width: 100%;
@@ -72,7 +98,8 @@ main {
 }
 
 .text-main{
-  width: 100;
+  display: flex;
+  padding: 2%;
 }
 
 .search-bar{
@@ -84,6 +111,12 @@ main {
   border-radius: 60px;
   padding: 10px 20px;
   backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075)
+    ;
 }
 
 .search-bar input{
@@ -92,12 +125,13 @@ main {
   border: 0;
   outline: none;
   padding: 24px 20px;
+  font-family: inherit;
   font-size: 20px;
   color: #000000;
 }
 
 ::placeholder{
-  color: #000000;
+  color: #807e7e;
 }
 
 .search-bar button img{
@@ -112,13 +146,52 @@ main {
   background: #ddf555;
   cursor: pointer;
 }
- .team { /* for teampage */
+
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+}
+    
+.div1 {
+    grid-column: span 4 / span 4;
+}
+
+.div2 {
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+.div3 {
+    grid-column: span 2 / span 2;
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+
+.div4 {
+    grid-column-start: 2;
+    grid-row-start: 4;
+}
+
+.div5 {
+    grid-column-start: 3;
+    grid-row-start: 4;
+}
+
+.div6 {
+    grid-column: span 2 / span 2;
+    grid-column-start: 2;
+    grid-row-start: 5;
+}
+        
+.team { 
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   border: 2px solid black;
   border-radius: 10px;
   text-align: center;
-  font-family:"Roboto", sans-serif;
   margin: 20px;
   padding: 20px;
   width: 250px;
@@ -132,7 +205,6 @@ main {
   padding: 20px;
   width: 1250px;
   text-align: center;
-  font-family:"Roboto", sans-serif;
-   float: left;
+  float: left;
  
-}
+} 

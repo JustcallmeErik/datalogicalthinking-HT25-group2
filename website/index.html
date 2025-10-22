@@ -2,33 +2,41 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-	<title>home</title>
+	<title>Home</title>
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="dataset.html">Dataset</a></li>
-            <li><a href="algorithm.html">Algorithm</a></li>
-            <li><a href="people.html">People</a></li>
-        </ul>
-    </nav>
-</header>
-
-<div class="container">
-    <div class="text-main">
-        Looking for a Great Movie?
+<section class="layout">
+    <div class="header">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="dataset.html">Dataset</a></li>
+                    <li><a href="algorithm.html">Algorithm</a></li>
+                    <li><a href="people.html">People</a></li>
+                </ul>
+            </nav>
+        </header>
     </div>
-    <form action="" class="search-bar">
-        <input type="text" placeholder="Search a Movie" name="link">
-        <button type="submit"><img src="assets/magnifying-glass.png" alt=""></button>
-    </form>
-</div>
+    <div class="leftSide"></div>
+    <div class="body">
+        <div class="container">
+            <div class="text-main">
+                <h1>Looking for a Great Movie?</h1>
+            </div>
+            <form action="" class="search-bar">
+                <input type="text" placeholder="Search a Movie" name="q">
+                <button type="submit"><img src="assets/magnifying-glass.png" alt=""></button>
+            </form>
+        </div> 
+    </div>
+    <div class="rightSide"></div>
+    <div class="footer">
 
-    <footer>
-    </footer>
+    </div>
+</section>
 </body>
 </html>
