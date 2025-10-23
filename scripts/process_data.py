@@ -1,6 +1,6 @@
 import json
 
-with open('data/output.json', 'r') as file:
+with open('data/cleanedData.json', 'r') as file:
     dataset = json.load(file)
 
 movie_genre = input("What genre do you like watch today? ").str.lower()
