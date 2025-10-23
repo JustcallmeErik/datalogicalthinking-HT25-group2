@@ -147,6 +147,18 @@ main {
   cursor: pointer;
 }
 
+.cblock{
+  background-color: #282c34; 
+  color: #f8f8f2;           
+  padding: 15px;
+  border-radius: 8px;
+  font-family: Consolas, Monaco, 'Courier New', monospace;
+  overflow-x: auto;        
+}
+
+.cblock ul {
+      list-style: none;
+}
 
 .parent {
     display: grid;
