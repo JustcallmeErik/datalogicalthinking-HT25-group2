@@ -1,0 +1,30 @@
+Task: Make a console app in python that takes user input and gives movie recomendations based on the user input and on the 1000 top rated movies on imdb. Also allow user to chose a random movie.
+What fields do we need to use? Genre, Runtime,Rating  - once we get the result we will need: Series_Title, Released_Year, Runtime, IMDB_Rating, Overview, Director, Star1, Star2, Star3, Star4.
+
+Questions to the user that will generate input:
+What Genre are you in the mood for? (Expected input, Genre (string))
+How much time (minutes) do you have to watch the movie? (Expected input, # of minutes (int))
+What decade should the movie be from? (Span of 10 years from 1950s-2020s) (Expected input, string, 1980s)
+
+--User interaction flow with the program--
+Application starts.
+Welcome to the movie recomender! My name is Charles and I will help you today.
+Type 1 if you are looking for recomendations based on your preferences and type 2 if you would like a random movie recomendation. 
+*User presses 2* I think you would enjoy {Series_Title} by {Director} starring {Star1, Star2, Star3, Star4}. Its from {Released_Year} and of the genre {Genre} and its got {IMDB_Rating} on IMDB! Here is the overview {Overview}.
+Press 1 if you would like another recomendation, 2 if you would like another random recomendation or 3 to exit the program.
+*User presses 1*
+Perfect! What kind of genre are you in the mood for today?
+*User types "Drama"*
+Exciting! How much time(minutes) do you have to watch the movie? The shortest movie we have is 45 minutes and the longest 321 minutes. 
+*User types 120*
+Great! From witch decade would you like the movie to be from? We have movies from the 1950s to the 2020s.
+*User types 2000s*
+Thank you! Based on your preferences I recommend{Series_Title} by {Director} starring {Star1, Star2, Star3, Star4}! Its from {Released_Year} and of the genre {Genre} and its got {IMDB_Rating} on IMDB! Here is the overview {Overview}.
+If you are happy with that recomendation please press 1 to exit the program. If you have already seen that movie and would like another recomendation based on your preferences please press 2.
+*User presses 2*
+Alright in that case I think I'll recommend {Series_Title} by {Director} starring {Star1, Star2, Star3, Star4}! Its from {Released_Year} and of the genre {Genre} and its got {IMDB_Rating} on IMDB! Here is the overview {Overview}.
+If you are happy with that recomendation please press 1 to exit the program. If you have already seen that movie and would like another recomendation based on your preferences please press 2.
+*User presses 1*
+Thank you for using the movie recommender! See you next time and enjoy your movie!
+*Program closes*
+--User interaction flow with the program--
