@@ -32,14 +32,10 @@
                  <!-- data description -->
                  <!-- ethical consideration of dataset (gender bias) -->
             </h4>
-            <h3>Data cleaning - notes</h3>
-            <ul>
-                <li>Removed: the keys: Certificate, Meta_score, No of votes, Gross as these values seems irrelevant related to the problem which the algorithm aim to solve.</li>
-                <li>The Key “Series_title” have been replaced with the key title_id - Its value is stored as a string.</li>
-                <li>All numbers are stored as integers or floats.</li>
-                <li>Value for genre and stars are respectively stored as arrays[ lists of values. ] </li>
-                <li>Details and people are objects within the movie object which holds a certain amount of key-value pairs, this is made by the objective to keep related data together which will make the dataset look clean and organized and makes it easier accessible through one specific key. </li>
-            </ul>
+            <h3>Data cleaning</h3>
+            <p>The dataset was originally retrieved as a CSV file but was later converted into JSON format but the file was still not customized for the algorithm’s intended purpose. All values were stored as strings at this point even though many represented numerical data. Additionally, several key-value pairs were considered irrelevant to the algorithm, including the properties   certificate, meta-score, number of votes, and gross.  
+To address this, the dataset was reconstructed and modelled a way that better suited the needs of the algorithm. The model required all numerical values to be converted into either integers or floats. Furthermore, irrelevant key-value pairs were deleted from the dataset as remaining unused values would create unnecessary storage requirements. Names of properties were changed into a consistent format and longer names of keys were splitted with an underscore for increased clarity. 
+After cleaning of the dataset the remaining result was a JSON file still containing the 1000 movie objects. Respective object with 11 key value pairs, consisting of standardised attributes, arrays, and nested objects within the object. The nested objects were introduced to group related data together with the aim to improve the structure and overall readability in the dataset.</p>
         </div>
     </div>
     <div class="rightSide"></div>
