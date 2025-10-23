@@ -32,6 +32,14 @@
                  <!-- data description -->
                  <!-- ethical consideration of dataset (gender bias) -->
             </h4>
+            <h3>Data cleaning - notes</h3>
+            <ul>
+                <li>Removed: the keys: Certificate, Meta_score, No of votes, Gross as these values seems irrelevant related to the problem which the algorithm aim to solve.</li>
+                <li>The Key “Series_title” have been replaced with the key title_id - Its value is stored as a string.</li>
+                <li>All numbers are stored as integers or floats.</li>
+                <li>Value for genre and stars are respectively stored as arrays[ lists of values. ] </li>
+                <li>Details and people are objects within the movie object which holds a certain amount of key-value pairs, this is made by the objective to keep related data together which will make the dataset look clean and organized and makes it easier accessible through one specific key. </li>
+            </ul>
         </div>
     </div>
     <div class="rightSide"></div>
