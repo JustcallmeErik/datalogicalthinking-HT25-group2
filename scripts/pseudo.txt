@@ -1,0 +1,14 @@
+Main steps
+    1. Load, clean movie dataset and transform from CSV to JSON
+    2. Display a message to user asking the Genre of the movie 
+    3. Get an input from user. 
+        Possibly a single word like "drama".
+        otherwise, for exapmle if user enter "action thriller", we have 
+        to code to extract two words like "action" "thriller".
+    4. Check the datset and get a matching movie
+
+
+
+
+set i to 0
+while (i < length of moviedataset )
