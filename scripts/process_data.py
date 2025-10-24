@@ -1,7 +1,7 @@
 import json
 
-with open('data/cleanedData.json', 'r') as file:
-    dataset = json.load(file)
+# with open('data/cleanedData.json', 'r') as file:
+#     dataset = json.load(file)
 
 print('''
 Welcome to the movie recomender!
