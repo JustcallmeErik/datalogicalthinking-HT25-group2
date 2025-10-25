@@ -17,8 +17,8 @@ Perfect! What kind of genre are you in the mood for today?
 *User types "Drama"*
 Exciting! How much time(minutes) do you have to watch the movie? The shortest movie we have is 45 minutes and the longest 321 minutes. 
 *User types 120*
-Great! From witch decade would you like the movie to be from? We have movies from the 1950s to the 2020s.
-*User types 2000s*
+Great! From which decade would you like the movie to be from? We have movies from the 1920s to the 2020s. (Could be an int instead to avoid casting, 1920, 1950, 2020 etc.)
+*User types 2000s* 
 Thank you! Based on your preferences I recommend{Series_Title} by {Director} starring {Star1, Star2, Star3, Star4}! Its from {Released_Year} and of the genre {Genre} and its got {IMDB_Rating} on IMDB! Here is the overview {Overview}.
 If you are happy with that recomendation please press 1 to exit the program. If you have already seen that movie and would like another recomendation based on your preferences please press 2.
 *User presses 2*
