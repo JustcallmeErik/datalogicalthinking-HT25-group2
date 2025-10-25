@@ -39,7 +39,7 @@
             </section>
             <section>
                 <div class ="team">
-                    <img src="Erik.JPG" alt="Picture of Erik" width="" height=""> 
+                    <img id="erikPic" src="assets/sigma_erik2.jpg" alt="Picture of Erik" width="250" height="250"> 
                     <H2>Erik Lundahl</H2>
                     <p>Systemvetenskap</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat ac est id rutrum.  </p>
@@ -68,7 +68,7 @@
                 <div class="box2">
                     <h2>Support Animals</h2>
                     <img src="assets/Pluto.jpg" alt="Picture of Amanda-dog"  width="300px" height="300px"> 
-                    <img src=".JPG" alt="Picture of Erik-input">
+                    <img src="assets/Platon&Ursus.jpg" alt="Picture of Erik-input" width = "300px" height = "300px">
                     <img src=".JPG" alt="Picture of Sacci-cat"> 
                     <img src="assets/Belle.jpg" alt="Picture of Tove-dog"  width="300px" height="300px">   
                 </div>    
@@ -79,6 +79,23 @@
     <div class="footer">
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const imgs = [
+    'assets/sigma_erik2.jpg',
+    'assets/erikpushing30_2.jpg',
+    'assets/actualpicoferik.jpg'
+  ];
+
+  const imgEl = document.getElementById('erikPic');
+  let i = 0;
+
+  setInterval(() => {
+    i = (i + 1) % imgs.length;
+    imgEl.src = imgs[i];
+  }, 3000);
+});
+</script>
 </body>
 </html>
 </html>
