@@ -25,18 +25,39 @@
     <div class="body">
         <div class="container">
             <div class ="box1">
-           <h1> Dataset</h1>
-               <p><!-- intro -->
-                The Dataset consists of IMDB top 1000 movies and tv shows of all the time. 
-                The original dataset can be found on <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle</a>.
+
+
+ <h1> Dataset</h1>
+<p> The Dataset consists of IMDB top 1000 movies and tv shows of all time. 
+The original dataset can be found on <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle</a>. + structure? </p>
+                                        
+<h2>Data cleaning</h2> 
+<p>The dataset was originally retrieved as a CSV file but was later converted into JSON format but the file was still not customized for the algorithm’s intended purpose.
+All values were stored as strings at this point even though many represented numerical data. 
+Additionally, several key-value pairs were considered irrelevant to the algorithm, including the properties certificate, meta-score, number of votes, and gross. 
+To address this, the dataset was reconstructed and modelled in a way that better suited the needs of the algorithm.</p>
+
+<p>The model required all numerical values to be converted into either integers or floats.
+Furthermore, irrelevant key-value pairs were deleted from the dataset as remaining unused values would create unnecessary storage requirements. 
+Names of properties were changed into a consistent format and longer names of keys were splitted with an underscore for increased clarity.
+After cleaning of the dataset the remaining result was a JSON file still containing the 1000 movie objects. 
+Respective object with 11 key value pairs, consisting of standardised attributes, arrays, and nested objects within the object. 
+The nested objects were introduced to group related data together with the aim to improve the structure and overall readability in the dataset.</p>
+
+<h2>Limitations</h2>
+<p>Some limitations to the dataset includes reliability regarding updates and potential bias within the data. 
+Since we have chosen a static dataset and not connected our data too a webcrawler (to scrape IMDB), our data will not be updated when IMDBs data is.
+If a movie has dropped out of the top 1000 or a new movie has been added, it would not show in our algorithm, which means that our dataset will become inaccurate. 
+The main purpose of our algorithm is to recommend examples of movies to watch.
+Having a dataset of 1000 movies that had (some point in time) a high rating on IMDB fulfills that purpose and do not necessary need to be updated for it to gain value to the user.</p>
+
+
+             
                 <!-- data cleaning -->
                  <!-- data description -->
                  <!-- ethical consideration of dataset (gender bias) -->
            
-            Data cleaning
-            The dataset was originally retrieved as a CSV file but was later converted into JSON format but the file was still not customized for the algorithm’s intended purpose. All values were stored as strings at this point even though many represented numerical data. Additionally, several key-value pairs were considered irrelevant to the algorithm, including the properties   certificate, meta-score, number of votes, and gross.  
-To address this, the dataset was reconstructed and modelled a way that better suited the needs of the algorithm. The model required all numerical values to be converted into either integers or floats. Furthermore, irrelevant key-value pairs were deleted from the dataset as remaining unused values would create unnecessary storage requirements. Names of properties were changed into a consistent format and longer names of keys were splitted with an underscore for increased clarity. 
-After cleaning of the dataset the remaining result was a JSON file still containing the 1000 movie objects. Respective object with 11 key value pairs, consisting of standardised attributes, arrays, and nested objects within the object. The nested objects were introduced to group related data together with the aim to improve the structure and overall readability in the dataset.</p>
+            
         </div>
     </div>
 
