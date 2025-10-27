@@ -28,12 +28,56 @@
 
 
  <h1> Dataset</h1>
-<p> The Dataset consists of IMDB top 1000 movies and tv shows of all time. 
-The original dataset can be found on <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle</a>. + structure? </p>
+<p> The Dataset consists of the top 1000 movies on IMDB in 2020. 
+The original dataset can be found on <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle</a> and consists of 1000 rows and 16 columns. </p>
                                         
 <h2>Data cleaning</h2> 
-<p>The dataset was originally retrieved as a CSV file but was later converted into JSON format but the file was still not customized for the algorithm’s intended purpose.
-All values were stored as strings at this point even though many represented numerical data. 
+<p>The dataset was originally retrieved as a CSV file with all values as strings. The original columns of the dataset was as following: </p>
+    <caption><b>Original CSV Data</b></caption>
+<div class="table-container">
+  <table>
+    <tr>
+      <th scope="col">Poster_Link</th>
+      <th scope="col">Series_Title</th>
+      <th scope="col">Released_Year</th>
+      <th scope="col">Certificate</th>
+      <th scope="col">Runtime</th>
+      <th scope="col">Genre</th>
+      <th scope="col">IMDB_Rating</th>
+      <th scope="col">Overview</th>
+      <th scope="col">Meta_score</th>
+      <th scope="col">Director</th>
+      <th scope="col">Star1</th>
+      <th scope="col">Star2</th>
+      <th scope="col">Star3</th>
+      <th scope="col">Star4</th>
+      <th scope="col">No_of_Votes</th>
+      <th scope="col">Gross</th>
+    </tr>
+    <tr>
+      <td>https://m.media-amazon.com/images/M/MV5BZjc4NDZhZWMtNGEzYS00ZWU2LThlM2ItNTA0YzQ0OTExMTE2XkEyXkFqcGdeQXVyNjUwMzI2NzU@._V1_UY98_CR0,0,67,98_AL_.jpg</td>
+      <td>It's a Wonderful Life</td>
+      <td>1946</td>
+      <td>PG</td>
+      <td>130 min</td>
+      <td>Drama, Family, Fantasy</td>
+      <td>8.6</td>
+      <td>An angel is sent from Heaven to help a desperately frustrated businessman by showing him what life would have been like if he had never existed.</td>
+      <td>89</td>
+      <td>Frank Capra</td>
+      <td>James Stewart</td>
+      <td>Donna Reed</td>
+      <td>Lionel Barrymore</td>
+      <td>Thomas Mitchell</td>
+      <td>405801</td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+
+</p>
+As you can see, there were several mismatched datatypes in the original CSV. For example, Runtime_Minutes being a string instead of an int. Additionally, the Genre column could contain several values in the same column.
 Additionally, several key-value pairs were considered irrelevant to the algorithm, including the properties certificate, meta-score, number of votes, and gross. 
 To address this, the dataset was reconstructed and modelled in a way that better suited the needs of the algorithm.</p>
 
@@ -47,7 +91,7 @@ The nested objects were introduced to group related data together with the aim t
 <h2>Limitations</h2>
 <p>Some limitations to the dataset includes reliability regarding updates and potential bias within the data. 
 Since we have chosen a static dataset and not connected our data too a webcrawler (to scrape IMDB), our data will not be updated when IMDBs data is.
-If a movie has dropped out of the top 1000 or a new movie has been added, it would not show in our algorithm, which means that our dataset will become inaccurate. 
+If a movie has dropped out of the top 1000 or a new movie has been added, it would not show in our dataset, which means that our dataset will become inaccurate/outdated. 
 The main purpose of our algorithm is to recommend examples of movies to watch.
 Having a dataset of 1000 movies that had (some point in time) a high rating on IMDB fulfills that purpose and do not necessary need to be updated for it to gain value to the user.</p>
 

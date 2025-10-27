@@ -33,6 +33,41 @@ body {
     font-weight: 700;
 }
 
+.table-container {
+  overflow-x: auto;   
+  overflow-y: hidden;
+  max-width: 100%;    
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(140, 140, 140);
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  min-width: 100%;   
+}
+
+caption {
+  caption-side: top;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px;
+  text-align: center;
+}
+
+th,
+td {
+  border: 1px solid rgb(160, 160, 160);
+  padding: 8px 6px;
+  white-space: nowrap; 
+}
+
+td {
+  text-align: center;
+}
+
+
 
 nav { 
     margin: auto;    /* center horizontally */
