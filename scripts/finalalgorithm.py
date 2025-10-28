@@ -2,7 +2,7 @@ import json
 import pandas as pd
 
 
-with open("datalogicalthinking-HT25-group2\data\output2.json", "r", encoding="utf-8") as f:
+with open("data\output2.json", "r", encoding="utf-8") as f:
     json_data = json.load(f) 
 
 df = pd.json_normalize(json_data)
@@ -43,15 +43,20 @@ def movie_recommender():
         The shortest movie we have is 45 minutes and the longest 321 minutes.
         \n
         ''')) 
-    decade = int(input('''
-        Great! From which year would you like the movie to be from?
-        We have movies from the 1950s to the 2020s.
-        \n
-        '''))
-    genre = input('''
-        Which genre are you looking for?
-        \n
-        ''').strip().lower() # we convert the input to lowercase and remove any extra space 
+    if minutes < 45:
+        print('''Looks like you don't have time to watch a movie!
+              \n''') 
+        main()
+    else:
+        decade = int(input('''
+         Great! From which year would you like the movie to be from?
+         We have movies from the 1950s to the 2020s.
+            \n
+            '''))
+        genre = input('''
+            Which genre are you looking for?
+            \n
+            ''').strip().lower() # we convert the input to lowercase and remove any extra space 
 
     get_data(genre, minutes, decade) # call get_data() function
 
@@ -80,6 +85,7 @@ def get_data(genre, minutes, decade):
     # if the dataframe is empty
     if year_df.empty:
         print("Sorry! No Movie is found \n")
+        main()
     else:
         # print dataframe
         for _, row in year_df.iterrows():
@@ -92,7 +98,7 @@ def get_data(genre, minutes, decade):
 
 def random_movie():
     # if the user select 2 
-    results = df.sample(n=2, replace=True) # here we take random two values from dataset and it will not give the same result twice
+    results = df.sample(n=1, replace=True) # here we take random two values from dataset and it will not give the same result twice
     print(results)
     main() # call main() function
 
