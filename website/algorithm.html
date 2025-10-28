@@ -46,24 +46,123 @@
                 <div class="cblock">
                     <code>
                         <ol>
-                            <li>Print text ("What genre you want to watch today?")</li>
-                            <li>Get user input ("Komedy")</li>
-                            <li>IF</li>
+                            <li>Load the dataset.</li>
+                            <li>Print welcome message.</li>
+                            <li>Start the loop.</li>
+                            <li>Get user input.
+                                <ul>
+                                    <li>1 for to get a movie based on preference</li>
+                                    <li>2 for to get a random movie recommendation</li>
+                                    <li>3 for to exit the program</li>
+                                </ul>
+                                
+                            </li>
+                            <li>If the user enter 1:</li>
                             <li>
                                 <ul>
-                                    <li>Print</li>
-                                    <li>Go to step</li>
+                                    <li>Get a user input for a Genre </li>
                                 </ul>
                             </li>
-                            <li>ELSE</li>
                             <li>
                                 <ul>
-                                    <li>Print</li>
+                                    <li>Select movies for matching Genre from dataset and assign to a new dataframe.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>Get a user input for time in minutes.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>Add +10 and -10 mintes to the entered time.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>Select movies for matching time range from new dataframe.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>Get a user input for year.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>Select movies for matching year from new dataframe.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>Combine results from step 10 and 12 and assigned to final dataframe.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>If the final dataframe is empty:</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li><ul>
+                                        <li>
+                                            Print message ("No movie is found")
+                                        </li>
+                                    </ul></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>Else:</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li><ul>
+                                        <li>
+                                            Print final dataframe
+                                        </li>
+                                    </ul></li>
+                                </ul>
+                            </li>
+                            <li>If the user enter 2:</li>
+                            <li>
+                                <ul>
+                                    <li>Randomly select and print two movies from dataset. </li>
+                                </ul>
+                            </li>
+                            <li>If the user enter 3:</li>
+                            <li>
+                                <ul>
+                                    <li>Print Goodbye message and exit the loop. </li>
+                                </ul>
+                            </li>
+                            <li>Else (user enter wrong input):</li>
+                            <li>
+                                <ul>
+                                    <li>Print an error message and go to step 3. </li>
                                 </ul>
                             </li>
                         </ul>    
                     </code>
                 </div>
+
+                <h2>Limitations</h2>
+                <p>
+                    <ul>
+                        <li>
+                            In this algorithm, if the user enter multiple values as the input for Genre (ex: Action, Drama),
+                            program will not work. We have designed it to take only one string value (ex: Drama).
+                        </li>
+                        <li>
+                            We ask user to enter time. We display lowest and highest duration of movies anticipating
+                            user will not enter a lower or higher number that will fall out of range of Runtime. Ideally, we 
+                            should validate these input agaist limits of Runtime. However, we decided to not to make algorithm 
+                            unnecessarily long.
+                        </li>
+                    </ul>
+                </p>
                 
             </div> 
             
