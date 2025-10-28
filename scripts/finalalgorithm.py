@@ -2,7 +2,7 @@ import json
 import pandas as pd
 
 
-with open("data\output2.json", "r", encoding="utf-8") as f:
+with open("data/output2.json", "r", encoding="utf-8") as f:
     json_data = json.load(f) 
 
 df = pd.json_normalize(json_data)
@@ -24,7 +24,8 @@ def main():
             random_movie() # call the random_movie() function
 
         elif selection == 3:
-            print("See You! \n")
+            print('''
+        See You! \n''')
         
         else:
             # if the user enter int value other than 1,2,3
@@ -44,19 +45,20 @@ def movie_recommender():
         \n
         ''')) 
     if minutes < 45:
-        print('''Looks like you don't have time to watch a movie!
-              \n''') 
+        print('''
+        Looks like you don't have time to watch a movie!
+        \n''') 
         main()
     else:
         decade = int(input('''
-         Great! From which year would you like the movie to be from?
-         We have movies from the 1950s to the 2020s.
-            \n
-            '''))
+        Great! From which year would you like the movie to be from?
+        We have movies from the 1950s to the 2020s.
+        \n
+        '''))
         genre = input('''
-            Which genre are you looking for?
-            \n
-            ''').strip().lower() # we convert the input to lowercase and remove any extra space 
+        Which genre are you looking for?
+        \n
+        ''').strip().lower() # we convert the input to lowercase and remove any extra space 
 
     get_data(genre, minutes, decade) # call get_data() function
 
@@ -90,17 +92,37 @@ def get_data(genre, minutes, decade):
         # print dataframe
         for _, row in year_df.iterrows():
             print("\n")
-            print("I think you would enjoy " f"{row['Series_Title']} by {row['Director']} \n"
-            f"Duration {row['Runtime']} \n"
-            f"starring {', '.join(row['Stars'])}. \n"
-            f"It's from {row['Released_Year']}, and of the genres {', '.join(row['Genre'])}, \n"
-            f"and its got {row['IMDB_Rating']}, on IMDB! Here is the overview: {row['Overview']}\n")
+            print(f'''I think you would enjoy: \n
+            "{row['Series_Title']}" by {row['Director']} 
+            Duration of {time_convert(int(row['Runtime']))}  minutes
+            starring {', '.join(row['Stars'])}. 
+            From the year {row['Released_Year']}, and of the genres {', '.join(row['Genre'])},
+            and its got {row['IMDB_Rating']}, on IMDB! 
+            Here is the overview: 
+            {row['Overview']}
+            \n''')
+        main()
 
 def random_movie():
     # if the user select 2 
     results = df.sample(n=1, replace=True) # here we take random two values from dataset and it will not give the same result twice
-    print(results)
+    for _, row in results.iterrows():
+            print("\n")
+            print(f'''I think you would enjoy: \n
+            "{row['Series_Title']}" 
+            {row['Released_Year']} | {time_convert(int(row['Runtime']))}\n
+            IMDB Rating: {row['IMDB_Rating']} ({', '.join(row['Genre'])}) \n
+            {row['Overview']}
+            Director: {row['Director']} 
+            Stars: {', '.join(row['Stars'])}. 
+            \n''')
     main() # call main() function
+
+def time_convert(time):
+    hr = time//60
+    m = time%60
+    #print(hr, "h ", m, "min")
+    return f"{hr}h {m}min"
 
 main()
 
