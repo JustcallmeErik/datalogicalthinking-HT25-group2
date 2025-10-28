@@ -78,8 +78,9 @@ The original dataset can be found on <a href="https://www.kaggle.com/datasets/ha
 
 </p>
 As you can see, there were several mismatched datatypes in the original CSV. For example, Runtime_Minutes being a string instead of an int. Additionally, the Genre column could contain several values in the same column.
-Additionally, several key-value pairs were considered irrelevant to the algorithm, including the properties certificate, meta-score, number of votes, and gross. 
-To address this, the dataset was reconstructed and modelled in a way that better suited the needs of the algorithm.</p>
+Additionally, several key-value pairs were considered irrelevant for the algorithm, including the properties; certificate, meta-score, number of votes, and gross. 
+Since CSV doesn't support nested data, like in this case a list of genres, we decided to translate the dataset to JSON. Another benefit of translating to JSON
+is the potential to connect the algorithm with an API that returns JSON files which would make it easier to get real-time upated movie recommendations.</p>
 
 <p>The model required all numerical values to be converted into either integers or floats.
 Furthermore, irrelevant key-value pairs were deleted from the dataset as remaining unused values would create unnecessary storage requirements. 
@@ -87,6 +88,53 @@ Names of properties were changed into a consistent format and longer names of ke
 After cleaning of the dataset the remaining result was a JSON file still containing the 1000 movie objects. 
 Respective object with 11 key value pairs, consisting of standardised attributes, arrays, and nested objects within the object. 
 The nested objects were introduced to group related data together with the aim to improve the structure and overall readability in the dataset.</p>
+
+<div class="cblock">
+    <code>
+        <ol>
+            <li>JSON Structure Overview:
+                <ul>
+                    <li>The root object contains a single key: "moviedb".</li>
+                    <li>"moviedb" contains one key: "movies".</li>
+                    <li>"movies" is an array (list) of movie objects.</li>
+                </ul>
+            </li>
+            <li>Each movie object contains the following keys:
+                <ul>
+                    <li>"Series_Title" - the title of the movie (string).</li>
+                    <li>"Released_Year" - the year the movie was released (integer).</li>
+                    <li>"Runtime"- the movie duration in minutes (integer).</li>
+                    <li>"Genre" - an array of genres the movie belongs to (e.g. ["Drama", "Action"]).</li>
+                    <li>"IMDB_Rating" - the IMDb rating of the movie (float).</li>
+                    <li>"Overview" - a short description of the movie (string).</li>
+                    <li>"Director" - the director of the movie (string).</li>
+                    <li>"Stars" - an array of main actors (e.g. ["Actor 1", "Actor 2", "Actor 3"]).</li>
+                </ul>
+            </li>
+            <li>Example of a single movie object:
+                <ul>
+                    <li>
+                        <pre>
+{
+  "Series_Title": "The Shawshank Redemption",
+  "Released_Year": 1994,
+  "Runtime": 142,
+  "Genre": ["Drama"],
+  "IMDB_Rating": 9.3,
+  "Overview": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+  "Director": "Frank Darabont",
+  "Stars": ["Tim Robbins", "Morgan Freeman", "Bob Gunton", "William Sadler"]
+}
+                        </pre>
+                    </li>
+                </ul>
+            </li>
+            <li>The "movies" array contains 1000 objects representing individual movies.</li>
+            <li>This structure allows nested data (like Genre and Stars lists) to be easily accessed by the algorithm for filtering and recommendations.</li>
+        </ol>
+    </code>
+</div>
+
 
 <h2>Limitations</h2>
 <p>Some limitations to the dataset includes reliability regarding updates and potential bias within the data. 
