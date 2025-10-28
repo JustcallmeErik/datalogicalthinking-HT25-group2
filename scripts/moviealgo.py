@@ -32,7 +32,7 @@ while y == True:
             for i in range(len(df)):
                 g_list = df.loc[i, 'Genre'] 
                 g_list = [g.lower() for g in g_list] 
-
+                print(g_list)
                 if genre in g_list: 
                     matching_rows.append(df.loc[i])
             
