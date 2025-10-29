@@ -50,16 +50,21 @@ def movie_recommender():
         \n''') 
         main()
     else:
-        year = int(input('''
+
+         genre = input('''
+        Which genre are you looking for?
+        \n
+        We have these genres to choose from: Action, Adventure, Animation, Biography, Crime, Comedy, Drama, Fantasy, \n
+        Film-Noir, History, Horror, Music, Musical, Mystery, Romance, Sci-fi, Sport, Thriller, War, Western
+
+        ''').strip().lower() # we convert the input to lowercase and remove any extra space 
+
+         year = int(input('''
         Great! From which year would you like the movie to be from?
         We have movies from the 1950s to the 2020s.
         \n
         '''))
-        genre = input('''
-        Which genre are you looking for?
-        \n
-        ''').strip().lower() # we convert the input to lowercase and remove any extra space 
-
+       
     get_data(genre, minutes, year) # call get_data() function
 
 def get_data(genre, minutes, year):
