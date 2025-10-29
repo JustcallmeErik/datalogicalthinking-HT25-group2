@@ -60,8 +60,8 @@ def movie_recommender():
         ''').strip().lower() # we convert the input to lowercase and remove any extra space 
 
          year = int(input('''
-        Great! From which year would you like the movie to be from?
-        We have movies from the 1950s to the 2020s.
+        Great! From which decade would you like the movie to be from?
+        We have movies from the 1920s to the 2020s.
         \n
         '''))
        
