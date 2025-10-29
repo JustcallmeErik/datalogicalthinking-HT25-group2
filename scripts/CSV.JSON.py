@@ -19,5 +19,5 @@ with open ("imdb_top_1000_cleaned.csv", "r", encoding="utf8") as f:
                      "Director": row[6],
                      "Stars": stars})
         
-with open ("structure.json", "w") as f:
+with open ("structured.json", "w") as f:
  json.dump({"moviedb": {"movies": data}},f, indent=4,)
