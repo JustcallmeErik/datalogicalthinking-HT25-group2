@@ -71,7 +71,7 @@ def get_data(genre, minutes, decade):
         if genre in g_list:  # if the given genre is in the list
             matching_rows.append(df.loc[i]) # if matched, we add the row into the empty list
 
-        genre_df = pd.DataFrame(matching_rows) # convert list into a dataframe
+    genre_df = pd.DataFrame(matching_rows) # convert list into a dataframe
 
 
     min_time = minutes - 10 # set lower limit for a runtime
@@ -80,7 +80,7 @@ def get_data(genre, minutes, decade):
     # we filter the genre_df further by time duration and assign into a new dataframe
     time_df = genre_df.loc[(genre_df['Runtime'] >= min_time) 
                                  & (genre_df['Runtime'] <= max_time) ]
-    
+
      # we filter the time_df further by year  and assign into a new dataframe
     year_df = time_df.loc[time_df['Released_Year'] == decade]
 
