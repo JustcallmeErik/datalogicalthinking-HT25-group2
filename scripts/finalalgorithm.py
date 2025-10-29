@@ -50,7 +50,7 @@ def movie_recommender():
         \n''') 
         main()
     else:
-        decade = int(input('''
+        year = int(input('''
         Great! From which year would you like the movie to be from?
         We have movies from the 1950s to the 2020s.
         \n
@@ -60,9 +60,9 @@ def movie_recommender():
         \n
         ''').strip().lower() # we convert the input to lowercase and remove any extra space 
 
-    get_data(genre, minutes, decade) # call get_data() function
+    get_data(genre, minutes, year) # call get_data() function
 
-def get_data(genre, minutes, decade):
+def get_data(genre, minutes, year):
 
     matching_rows = [] # define an empty list
     for i in range(len(df)):
@@ -81,14 +81,22 @@ def get_data(genre, minutes, decade):
     time_df = genre_df.loc[(genre_df['Runtime'] >= min_time) 
                                  & (genre_df['Runtime'] <= max_time) ]
 
+    # we want to turn the year into a year
+    decade_start = year - (year%10)
+    decade_end = decade_start + 9
+
+
      # we filter the time_df further by year  and assign into a new dataframe
-    year_df = time_df.loc[time_df['Released_Year'] == decade]
+    year_df = time_df.loc[(time_df['Released_Year'] >= decade_start)
+                          & (time_df['Released_Year'] <= decade_end)]
 
     # if the dataframe is empty
     if year_df.empty:
         print("Sorry! No Movie is found \n")
         main()
     else:
+        # get only the first row
+        year_df = year_df.head(1)
         # print dataframe
         for _, row in year_df.iterrows():
             print("\n")
