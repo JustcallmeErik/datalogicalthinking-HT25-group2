@@ -8,9 +8,7 @@
 	<title>Dataset</title>
 </head>
 <body>
-<section class="layout">
-    <div class="header">
-        <header>
+       <header>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -20,20 +18,13 @@
                 </ul>
             </nav>
         </header>
-    </div>
-    <div class="leftSide"></div>
-    <div class="body">
-        <div class="container">
-            <div class ="box1">
-
-
- <h1> Dataset</h1>
-<p> The Dataset consists of the top 1000 movies on IMDB in 2020. 
-The original dataset can be found on <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle</a> and consists of 1000 rows and 16 columns. </p>
-                                        
-<h2>Data cleaning</h2> 
+        <div class ="box1">
+            <h1> Dataset</h1>
+            <p> The Dataset consists of the top 1000 movies on IMDB in 2020. 
+                The original dataset can be found on <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle</a> and consists of 1000 rows and 16 columns. </p>
+            <h2>Data cleaning</h2> 
 <p>The dataset was originally retrieved as a CSV file with all values as strings. The original columns of the dataset was as following: </p>
-    <caption><b>Original CSV Data</b></caption>
+    <h3>Original CSV Data</h3>
 <div class="table-container">
   <table>
     <tr>
@@ -76,7 +67,7 @@ The original dataset can be found on <a href="https://www.kaggle.com/datasets/ha
 </div>
 
 
-</p>
+<p>
 As you can see, there were several mismatched datatypes in the original CSV. For example, Runtime_Minutes being a string instead of an int. Additionally, the Genre column could contain several values in the same column.
 Additionally, several key-value pairs were considered irrelevant for the algorithm, including the properties; certificate, meta-score, number of votes, and gross. 
 Since CSV doesn't support nested data, like in this case a list of genres, we decided to translate the dataset to JSON. Another benefit of translating to JSON
@@ -90,7 +81,6 @@ Respective object with 11 key value pairs, consisting of standardised attributes
 The nested objects were introduced to group related data together with the aim to improve the structure and overall readability in the dataset.</p>
 
 <div class="cblock">
-    <code>
         <ol>
             <li>JSON Structure Overview:
                 <ul>
@@ -132,10 +122,7 @@ The nested objects were introduced to group related data together with the aim t
             <li>The "movies" array contains 1000 objects representing individual movies.</li>
             <li>This structure allows nested data (like Genre and Stars lists) to be easily accessed by the algorithm for filtering and recommendations.</li>
         </ol>
-    </code>
 </div>
-
-
 <h2>Limitations</h2>
 <p>Some limitations to the dataset includes reliability regarding updates and potential bias within the data. 
 Since we have chosen a static dataset and not connected our data too a webcrawler (to scrape IMDB), our data will not be updated when IMDBs data is.
@@ -147,16 +134,8 @@ Having a dataset of 1000 movies that had (some point in time) a high rating on I
              
                 <!-- data cleaning -->
                  <!-- data description -->
-                 <!-- ethical consideration of dataset (gender bias) -->
-           
-            
+                 <!-- ethical consideration of dataset (gender bias) -->   
         </div>
-    </div>
-
-    <div class="rightSide"></div>
-    <div class="footer">
-
-    </div>
-</section>
+    <footer></footer>
 </body>
 </html>
