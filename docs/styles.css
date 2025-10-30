@@ -20,8 +20,6 @@ header {
     padding: 20px;
     background: linear-gradient(180deg, #302e2e, #190606); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-    color: #ffffff;
-    line-height: 40px;
     font-weight: 700;
 }
 h1 {
@@ -29,8 +27,7 @@ h1 {
 }
 .table-container {
   overflow-x: auto;   
-  overflow-y: hidden;
-  max-width: 100%;    
+  overflow-y: hidden;    
 }
 
 table {
@@ -38,8 +35,7 @@ table {
   border: 2px solid rgb(140, 140, 140);
   font-family: sans-serif;
   font-size: 0.8rem;
-  letter-spacing: 1px;
-  min-width: 100%;   
+  letter-spacing: 1px;   
 }
 th,
 td {
@@ -60,7 +56,6 @@ nav ul {
     justify-content: space-between;
     align-items: center;           
     list-style: none;        
-    margin: 0;
     gap: 1rem;             
   }
 nav a {
@@ -86,7 +81,7 @@ nav a:hover {
       max-width: 600px;
       height: fit-content;
       background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .box2-container {
   display: flex;
@@ -100,7 +95,7 @@ nav a:hover {
   border: 2px solid black;
   padding: 10px;
   width: fit-content; 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .cblock{
   background-color: #282c34; 
