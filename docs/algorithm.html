@@ -5,6 +5,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 	<title>Algorithm</title>
 </head>
 <body>
@@ -33,13 +36,204 @@
                         </li>
                     </ol>
                     <p>To increase user experience, we have designed the algorithm in an interactive way. 
-                    <!-- The algorithmn then filter the dataset according to the given input factors and find a matching movie.
-                    The result will be sorted based on the IMDB rating, meaning the first result is highest rated.The algorithm will return a movie recommendation. 
-                    There is also a loop process if the user answers yes to: “Have you seen this movie before?” -->
+                </p>
+                <h4>Challenges</h4>
+                <p>
+                    In the beginning, we brainstormed what the features or steps of our algorithms should be. 
+                    We’ve documented it in a text  file and use it as our 
+                    <a href = "https://github.com/JustcallmeErik/datalogicalthinking-HT25-group2/blob/main/drafts/applicationFlowAndPseudoCodeConsoleApp">“1st iteration”</a>. 
+                    Using this we’ve started developing the algorithm. Here is a list of challenges we encountered.
+                </p>
+                <p>
+                    <ol>
+                        <li>How to order the inputs:
+                            <p>When developing an algorithm that depends on user input it is important to make it 
+                                clear to the user what the expected input should be at the different steps to aid the 
+                                usability of the application. We decided on the order Time > Genre > Decade since we thought 
+                                it would be most intuitive for the user since they most likely already know much time they have 
+                                to watch a movie (although perhaps not down to the minute), then what genre they are in the mood for and 
+                                finally once they have settled on a genre they can decide the decade. The reason to get the decade 
+                                input last is that once the user decides on a genre they might already have a decade in mind and if they have some knowledge.
+                            We know that by using assumptions, we are limiting the user. However, to get this algorithm work we had to use this assumption.
+                            </p>
+                        </li>
+                        <li>How to deal with time?
+                            <p>
+                                We ask the user to enter a time to identify how much approximate time they would want to allocate to watch a movie. 
+                                Then we turn this time into a range by adding +10  and - 10 minutes. We did this to avoid getting no results when matched with an exact time value.
+                            </p>
+                        </li>
+                        <li>How to deal with strings to filter by genre?
+                            <p>
+                                We have a limited number of genres. 
+                                Since it's not clear to the user what the options are, we decided to print out all the genres available.
+                                 We also converted the user input to lowercase to prevent it from being case sensitive. 
+                                 One improvement point that we considered here but weren't able to do was to account for spelling mistakes by the user. 
+                                 In its current state if the user misspell the genre the algorithm will return “Sorry! No Movie is found”.
+                            </p>
+                        </li>
+                        <li>How to deal with decade?
+                            <p>
+                                We get a year from the user and convert into a decade. For example, if the user wanted to see a movie in 2011, we recommend movies from 2010 to 2019. 
+                                Because, here also we have assumed that the user would like to watch a movie within the decade of the preferred year.
+                            </p>
+                        </li>
+                        <li>How to run the algorithm continuously?
+                            <p>
+                                We wanted to validate user input and print out user friendly messages and continuously run the algorithm without ending abruptly. 
+                                We figured this by using loops, boolean operators combined with proper error handling. We allow the user to choose and end the algorithm.
+
+                            </p>
+                        </li>
+                    </ol>
                 </p>
                 <h4>The Movie Recommender Algorithm</h4>
-                <div class="cblock">
-                        <ol>
+                <pre><code class="python">
+import json
+import pandas as pd
+
+
+with open("data/output2.json", "r", encoding="utf-8") as f:
+    json_data = json.load(f) 
+
+df = pd.json_normalize(json_data)
+
+def main():
+    # taking user input
+    selection = int(input('''Please select an option:
+        1. If you are looking for recomendations based on your preferences.
+        2. If you would like a random movie recomendation.
+        3. If to exit.
+        \n
+        '''))
+    try:
+        # test user input 
+        if selection == 1:
+            movie_recommender() # call the function movie_recommender()
+        
+        elif selection == 2: 
+            random_movie() # call the random_movie() function
+
+        elif selection == 3:
+            print('''
+        See You! \n''')
+        
+        else:
+            # if the user enter int value other than 1,2,3
+            print("Wrong input, Please select 1, 2, or 3")
+            main() # run function again
+            
+    except:
+        # handle error
+        print("Wrong input, please try again.") 
+        main()      
+
+def movie_recommender():
+    # we get and store user inputs
+    minutes = int(input('''
+        Exciting! How much time(minutes) do you have to watch the movie?
+        The shortest movie we have is 45 minutes and the longest 321 minutes.
+        \n
+        ''')) 
+    if minutes < 45:
+        print('''
+        Looks like you don't have time to watch a movie!
+        \n''') 
+        main()
+    else:
+
+         genre = input('''
+        Which genre are you looking for?
+        \n
+        We have these genres to choose from: \n
+        Action, Adventure, Animation, Biography, Crime, Comedy, Drama, Fantasy, \n
+        Film-Noir, History, Horror, Music, Musical, Mystery, Romance, Sci-fi, Sport, Thriller, War, Western
+
+        ''').strip().lower() # we convert the input to lowercase and remove any extra space 
+
+         year = int(input('''
+        Great! From which decade would you like the movie to be from?
+        We have movies from the 1920s to the 2020s.
+        \n
+        '''))
+       
+    get_data(genre, minutes, year) # call get_data() function
+
+def get_data(genre, minutes, year):
+
+    matching_rows = [] # define an empty list
+    for i in range(len(df)):
+        g_list = df.loc[i, 'Genre'] # get the Genre column for each row
+        g_list = [g.lower() for g in g_list]  # convert all the values to lowercase in Genre
+        if genre in g_list:  # if the given genre is in the list
+            matching_rows.append(df.loc[i]) # if matched, we add the row into the empty list
+
+    genre_df = pd.DataFrame(matching_rows) # convert list into a dataframe
+
+
+    min_time = minutes - 10 # set lower limit for a runtime
+    max_time = minutes + 10 # set upper limit for a runtime
+
+    # we filter the genre_df further by time duration and assign into a new dataframe
+    time_df = genre_df.loc[(genre_df['Runtime'] >= min_time) 
+                                 & (genre_df['Runtime'] <= max_time) ]
+
+    # we want to turn the year into a year
+    decade_start = year - (year%10)
+    decade_end = decade_start + 9
+
+
+     # we filter the time_df further by year  and assign into a new dataframe
+    year_df = time_df.loc[(time_df['Released_Year'] >= decade_start)
+                          & (time_df['Released_Year'] <= decade_end)]
+
+    # if the dataframe is empty
+    if year_df.empty:
+        print("Sorry! No Movie is found \n")
+        main()
+    else:
+        # get only the first row
+        year_df = year_df.head(1)
+        # print dataframe
+        for _, row in year_df.iterrows():
+            print("\n")
+            print("\n")
+            print(f'''I think you would enjoy: \n
+            "{row['Series_Title']}" 
+            {row['Released_Year']} | {time_convert(int(row['Runtime']))}\n
+            IMDB Rating: {row['IMDB_Rating']} ({', '.join(row['Genre'])}) \n
+            Overview:
+            {row['Overview']}
+            Director: {row['Director']} 
+            Stars: {', '.join(row['Stars'])}. 
+            \n''')
+        main()
+
+def random_movie():
+    # if the user select 2 
+    results = df.sample(n=1, replace=True) # here we take random two values from dataset and it will not give the same result twice
+    for _, row in results.iterrows():
+            print("\n")
+            print(f'''I think you would enjoy: \n
+            "{row['Series_Title']}" 
+            {row['Released_Year']} | {time_convert(int(row['Runtime']))}\n
+            IMDB Rating: {row['IMDB_Rating']} ({', '.join(row['Genre'])}) \n
+            Overview:
+            {row['Overview']}
+            Director: {row['Director']} 
+            Stars: {', '.join(row['Stars'])}. 
+            \n''')
+    main() # call main() function
+
+def time_convert(time):
+    hr = time//60
+    m = time%60
+    #print(hr, "h ", m, "min")
+    return f"{hr}h {m}min"
+
+main()
+                    </code></pre>
+                        <!-- <ol>
                             <li>Load the dataset.</li>
                             <li>Print welcome message.</li>
                             <li>Start the loop.</li>
@@ -138,22 +332,40 @@
                                     <li>Print an error message and go to step 3. </li>
                                 </ul>
                             </li>
-                        </ol>    
+                        </ol>     -->
                     
-                </div>
+                <!-- </div> -->
 
                 <h2>Limitations</h2>
                 <p>
                     <ul>
                         <li>
+                        <p>
                             In this algorithm, if the user enter multiple values as the input for Genre (ex: Action, Drama),
                             program will not work. We have designed it to take only one string value (ex: Drama).
+                        </p>  
                         </li>
                         <li>
+                            <p>
                             We ask user to enter time. We display lowest and highest duration of movies anticipating
-                            user will not enter a lower or higher number that will fall out of range of Runtime. Ideally, we 
-                            should validate these input agaist limits of Runtime. However, we decided to not to make algorithm 
+                            user will not enter a higher number that will fall out of range of Runtime. We validate for lowerest duration. Ideally, we 
+                            should also validate the input agaist highest limit of Runtime. However, we decided to not to make algorithm 
                             unnecessarily long.
+                            </p>
+                        </li>
+                        <li><p>
+                            Currently the way the algorithm works is that we only display one result based on certain inputs 
+                            which means that there are going to be a lot of movies in the database that the user is not going 
+                            to find using the algorithm because they might be too generic or show up lower in the already sorted (by IMDB rating).
+                        </p>
+                        </li>
+                        <li>
+                            <p>
+                            If the user wanted to get a random movie recommendation, it would never produce the same movie output twice. 
+                            This could be both a good and bad feature. It is good if the user has already watched the displayed movie. 
+                            It is bad if the user wants to get the same movie recommended.
+                            </p>
+                            
                         </li>
                     </ul>    
             </div> 
