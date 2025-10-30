@@ -2,10 +2,10 @@ import json
 import pandas as pd
 
 
-with open("data/output2.json", "r", encoding="utf-8") as f:
+with open("data/structured.json", "r", encoding="utf-8") as f:
     json_data = json.load(f) 
 
-df = pd.json_normalize(json_data)
+df = pd.json_normalize(json_data["moviedb"]["movies"])
 
 def main():
     # taking user input

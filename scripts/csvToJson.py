@@ -1,7 +1,7 @@
 import json
 import csv
 
-with open ("imdb_top_1000_cleaned.csv", "r", encoding="utf8") as f:
+with open ("data/imdbTop1000Cleaned.csv", "r", encoding="utf8") as f:
     read = csv.reader(f)
     next(read)
     
