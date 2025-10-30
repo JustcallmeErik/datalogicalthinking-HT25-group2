@@ -1,2 +1,29 @@
 # datalogicalthinking-HT25-group2
 
+Hello and welcome to this project! The purpose of this file is to give some guidance in how to access and use the movie recommender algorithm and what prerequisites you will need to have.
+
+To read more about this project we suggest looking at the github pages page where you will be able to read about the considerations, limitations and challenges.
+
+To run this application you will need to have:
+An IDE that can read python and JSON files
+A Python debugger
+Pandas installed 
+
+The examples below will be done in VS code but feel free to use whatever IDE you are comfortable with.
+
+To download the repository to your VS code you can open a new folder with VS code and press “Clone Git Repository” and then simply paste the url from github into the searchbar at the top.
+
+Once you have done this and have all the files in your IDE you will need to download pandas.
+To do this you can open up a terminal with powershell and paste the following code:
+python -m ensurepip --upgrade python -m pip install --upgrade pip python -m pip install pandas
+<img width="1905" height="1016" alt="image" src="https://github.com/user-attachments/assets/4e95a16e-c3b7-4bef-aa1c-6f5b1d0b351e" />
+
+You now have pandas!
+
+Finally if you don't already have a python debugger go to "extensions" 
+Search for “python” in the search bar and get “Python” and “Python Debugger” by Microsoft. That is what we used.
+
+We hope these steps were helpful and that you enjoy using the algorithm!
+
+Best regards,
+Grupp 2
