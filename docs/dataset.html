@@ -22,8 +22,20 @@
         <div class ="box1">
             <h1> Dataset</h1>
             <p> The Dataset consists of the top 1000 movies on IMDB in 2020. 
-                The original dataset can be found on <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle</a> and consists of 1000 rows and 16 columns. </p>
-            <h2>Data cleaning</h2> 
+                The original dataset can be found on <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle</a> and consists of 1000 rows and 16 columns. 
+            </p>
+            <h2>Choosing a dataset</h2>
+            <p>
+                During the process of deciding which dataset to use for the project, we first considered one dataset related to <a href="https://www.kaggle.com/datasets/datamunge/sign-language-mnist">sign language</a>. 
+                Unfortunately the dataset did not contain enough items and we were considering whether we could develop it further to align with the 50 items, 
+                which was stated to be the minimum requirement for this project. We quickly set the dataset aside because we realised that it would be too difficult to design a meaningful 
+                algorithm based on the specific subject as well as the datatypes it contained. We therefore changed direction and decided to look for a dataset related to movies that could 
+                support the function of a movie recommender algorithm. The first movie related dataset contained around 10 000 movies and can be found here:<a href="https://www.kaggle.com/datasets/utkarshvishwakarmaco/tmdb-10000-movies-dataset">TMDB 10000 Movies Dataset</a>. 
+                We refined our search further and came across a dataset featuring the top 1000 ranked movies on IMDB. We considered this dataset to better suit the development of the algorithm 
+                because the data was already ordered and structured in an intuitive way. We also chose this movie dataset instead of the other since we deemed 10 000 entries to be a bit excessive 
+                for the purposes of the algorithm. 
+            </p>
+                <h2>Data curation</h2> 
 <p>The dataset was originally retrieved as a CSV file with all values as strings. The original columns of the dataset was as following: </p>
     <h3>Original CSV Data</h3>
 <div class="table-container">
@@ -69,18 +81,32 @@
 
 
 <p>
-As you can see, there were several mismatched datatypes in the original CSV. For example, Runtime_Minutes being a string instead of an int. Additionally, the Genre column could contain several values in the same column.
-Additionally, several key-value pairs were considered irrelevant for the algorithm, including the properties; certificate, meta-score, number of votes, and gross. 
-Since CSV doesn't support nested data, like in this case a list of genres, we decided to translate the dataset to JSON. Another benefit of translating to JSON
-is the potential to connect the algorithm with an API that returns JSON files which would make it easier to get real-time upated movie recommendations.</p>
-
-<p>The model required all numerical values to be converted into either integers or floats.
-Furthermore, irrelevant key-value pairs were deleted from the dataset as remaining unused values would create unnecessary storage requirements. 
-Names of properties were changed into a consistent format and longer names of keys were splitted with an underscore for increased clarity.
-After cleaning of the dataset the remaining result was a JSON file still containing the 1000 movie objects. 
-Respective object with 11 key value pairs, consisting of standardised attributes, arrays, and nested objects within the object. 
-The nested objects were introduced to group related data together with the aim to improve the structure and overall readability in the dataset.</p>
-
+In the output above, we can see that there were several mismatched datatypes in the original CSV. For example, “Runtime_Minutes” being a string instead of an int. 
+Furthermore, the property “Genre” contained several values within its column and “Stars” were stored in numerous columns. Several properties were considered irrelevant for the 
+algorithm, including; “certificate”, “meta-score”, “number of votes”, and “gross”. The properties also did not have a purpose to fulfill for our algorithm and were deleted to not 
+store unused values and use unnecessary storage
+</p>
+<h3>Data serialization</h3>
+<p>
+To get the algorithm to access the data that it needed, we iterated the dataset and redid the data structure in tabular-format (Excel). 
+Doing this also made us find an error in the dataset, which was that one movie was missing several values, so we manually added the values from IMDBs website. 
+We also removed the word “min” in “runtime” to make it easier to parse this string to an int. Since CSV doesn't support nested data, we decided to do a data serialization 
+and translate the dataset to JSON by implementing functions in python. We converted the four “star columns” into one column called “stars” (same structure as the “Genre column”). we use:
+ <pre><code class="python">
+r row in read:
+genres = [g.strip() for g in row[3].split(",")]
+stars = [g.strip() for g in row[7].split(",")]
+to get the values in the properties to be outputted in json as an array.
+We also used:
+ data.append ( { "Released_Year": int(row[1]),
+                     "Runtime": int(row[2]),
+                     "IMDB_Rating": float(row[4]) 
+</code></pre>
+to translate the properties that needed to be floats and ints. Another benefit of translating to JSON is the potential to connect the algorithm with an API that returns 
+JSON files which would make it easier to get real-time updated movie recommendations. After the data serialization the remaining result was a JSON file still containing the 
+1000 movie objects and every object contained 8 properties, consisting of datatypes: int, str, floats and arrays.
+</p>
+<h3>This is the JSON structure that we settled on:</h3>
 <div class="cblock">
         <ol>
             <li>JSON Structure Overview:
@@ -125,17 +151,19 @@ The nested objects were introduced to group related data together with the aim t
         </ol>
 </div>
 <h2>Limitations</h2>
-<p>Some limitations to the dataset includes reliability regarding updates and potential bias within the data. 
-Since we have chosen a static dataset and not connected our data too a webcrawler (to scrape IMDB), our data will not be updated when IMDBs data is.
-If a movie has dropped out of the top 1000 or a new movie has been added, it would not show in our dataset, which means that our dataset will become inaccurate/outdated. 
-The main purpose of our algorithm is to recommend examples of movies to watch.
-Having a dataset of 1000 movies that had (some point in time) a high rating on IMDB fulfills that purpose and do not necessary need to be updated for it to gain value to the user.</p>
-
-
-             
-                <!-- data cleaning -->
-                 <!-- data description -->
-                 <!-- ethical consideration of dataset (gender bias) -->   
+<p>
+    Some limitations to the dataset include reliability regarding updates and potential bias within the data. Since we have chosen a static dataset and not connected our data to a webcrawler 
+    (to scrape IMDB), our data will not be updated when IMDBs data is. If a movie has dropped out of the top 1000 or a new movie has been added, it would not show in our dataset, which means 
+    that our dataset will become inaccurate/outdated. The main purpose of our algorithm is to recommend examples of movies to watch. Having a dataset of 1000 movies that had 
+    (at some point in time) a high rating on IMDB fulfills that purpose and does not necessarily need to be updated for it to gain value to the user.
+</p>
+<p>
+    According to IMDBs help page (2025), their rating system is applied across their database and includes a complex “voter weighting system” to make sure that the final rating is 
+    representative of the general voting population. Since the actual algorithm of the “voter weighting system” is not public, we can not get access to it and fully understand what it 
+    entails. For transparency to the user, it could be beneficial to be aware that this does not necessarily mean that the data is actually unbiased. Lauzen (2022) argues that male 
+    reviewers in general write more movie reviews than women, in addition she mentions that men are more likely to review movies by male directors which in turn can increase the visibility 
+    of such movies in an unfair way. As an example from our dataset we can see from the <a href="https://www.kaggle.com/code/harshitshankhdhar/eda-on-imdb-movies-dataset">EDA</a> on Kaggle that all of the top 10 most occurring directors are male. 
+</p>
         </div>
         </main>
     <footer></footer>

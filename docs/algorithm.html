@@ -24,47 +24,51 @@
     <main>
             <div class="box1">
                 <h1>Description of algorithm</h1>
-                <p>The purpose of this algorithm is to provide movie recommendation based on three input factors provided by the user:</p>
-                    <ol>
-                        <li>
-                            How much time the user have to watch the movie
-                        </li>
-                        <li>
-                            Which year the user like the movie to be from
-                        </li>
-                        <li>
-                            Which genre the user like movie to be from
-                        </li>
-                    </ol>
-                    <p>To increase user experience, we have designed the algorithm in an interactive way. 
+                <p>
+                    The algorithm is an interactive movie recommendation system that uses a dataset of movies stored in a JSON file. 
+                    When the algorithm is executed, it first loads the JSON data from {}structured.json and converts it into a structured pandas DataFrame. 
+                    This is done to more easily filter the result. Pandas DataFrames also have a lot of built in methods that we utilize when, for example, we show the movie recommendation to the user. 
+                    After the JSON file is converted into a DataFrame we need to filter the DataFrame based on 3 inputs from the user; 
+                    the amount of minutes the user has to watch a movie, the genre the user would like to see and the decade the user would like the movie to be from. 
+                </p>
+                <p>
+                    After we have gotten these inputs we do some processing of them to increase the chances that the user preferences will actually match a movie in the DataFrame. 
+                    Once we have gotten the inputs and processed them we use them to filter the DataFrame and then print out a random result to the user based on their preferences. 
+                    If the input the user provided matches only 1 movie they will get the same movie each they input that but if the input matches with several movies they might get a new movie each time. 
+                    Users also have the option to get a completely random movie recommendation if they would like to.
+                </p>
+                <p>
+                    The algorithm is entirely self-contained and does not save or track user data. This means that each session is independent and when the application is closed, the user input is also cleared. 
+                    This mitigates some of the ethical considerations one has to account for when dealing with user data, since we are not gathering any user data. There are two main drawbacks to this approach however. 
+                    The first one is from a user perspective. Since we don't store any data the user won't be able to see past recommendations and if the user accidentally closes down the application they might not get the same recommendation even if they send in the same input. 
+                    The second drawback is that the algorithm is static as opposed to self-reinforcing or “learning”. This means that the process of providing recommendations won't improve with more use of the algorithm. 
+                    A potential enhancement in the future could be lightweight learning or local storage that remembers user preferences or favorite genres or previous movie recommendations, 
+                    and these would help further personalize and adapt the recommendations while still not gathering any personal information about the users.
                 </p>
                 <h4>Challenges</h4>
                 <p>
-                    In the beginning, we brainstormed what the features or steps of our algorithms should be. 
-                    We’ve documented it in a text  file and use it as our 
-                    <a href = "https://github.com/JustcallmeErik/datalogicalthinking-HT25-group2/blob/main/drafts/applicationFlowAndPseudoCodeConsoleApp">“1st iteration”</a>. 
-                    Using this we’ve started developing the algorithm. Here is a list of challenges we encountered.
+                    In the beginning of the project, we brainstormed what the features or steps of our algorithm should be. 
+                    Once we settled on the problem the algorithm would solve (recommend a movie from the dataset based on user input) we created a text file called <a href = "https://github.com/JustcallmeErik/datalogicalthinking-HT25-group2/blob/main/drafts/applicationFlowAndPseudoCodeConsoleApp">“applicationFlowAndPseudoCodeConsoleApp”</a>. 
+                    The idea with this file was not to use “true” pseudo code as we have been taught in class but rather to describe the steps/ flow of the application to have a reference point when developing the algorithm. 
+                    Below are some of the challenges we encountered and you can read the txt file in the repository on github.
                 </p>
                 <p>
                     <ol>
-                        <li>How to order the inputs:
-                            <p>When developing an algorithm that depends on user input it is important to make it 
-                                clear to the user what the expected input should be at the different steps to aid the 
-                                usability of the application. We decided on the order Time > Genre > Decade since we thought 
-                                it would be most intuitive for the user since they most likely already know much time they have 
-                                to watch a movie (although perhaps not down to the minute), then what genre they are in the mood for and 
-                                finally once they have settled on a genre they can decide the decade. The reason to get the decade 
-                                input last is that once the user decides on a genre they might already have a decade in mind and if they have some knowledge.
-                            We know that by using assumptions, we are limiting the user. However, to get this algorithm work we had to use this assumption.
+                        <li><b>How to order the inputs:</b>
+                            <p>When developing an algorithm that depends on user input it is important to make it clear to the user what the expected input should be at the different steps to aid the usability of the application. 
+                                We decided on the order Time>Genre>Decade since we thought it would be most intuitive for the user since they most likely already know much time they have to watch a movie (although perhaps not down to the minute), 
+                                then what genre they are in the mood for and finally once they have settled on a genre they can decide the decade. The reason to get the decade input last is that once the user decides on a genre they might already have a decade in mind.
+                                We know that by using assumptions, we are limiting the user. However, since user testing is outside of the scope of the project we only have our own assumptions to go by. If we made a 2.0 version this is perhaps the most obvious improvement point.
                             </p>
                         </li>
-                        <li>How to deal with time?
+                        <li><b>How to deal with time?</b>
                             <p>
-                                We ask the user to enter a time to identify how much approximate time they would want to allocate to watch a movie. 
-                                Then we turn this time into a range by adding +10  and - 10 minutes. We did this to avoid getting no results when matched with an exact time value.
+                                We ask the user to enter a time to identify how much approximate time they would want to allocate to watch a movie. Then we turn this time into a range by adding +10  and - 10 minutes.
+                                We did this to increase the chance that this input will yield a result and so the user did not have to guess on an exact time value. 
+                                We also made an assumption here that when a user is in the mood to watch a movie they wouldn't mind the movie being 10 minutes longer or shorter.
                             </p>
                         </li>
-                        <li>How to deal with strings to filter by genre?
+                        <li><b>How to deal with strings to filter by genre?</b>
                             <p>
                                 We have a limited number of genres. 
                                 Since it's not clear to the user what the options are, we decided to print out all the genres available.
@@ -73,17 +77,19 @@
                                  In its current state if the user misspell the genre the algorithm will return “Sorry! No Movie is found”.
                             </p>
                         </li>
-                        <li>How to deal with decade?
+                        <li><b>How to deal with decade?</b>
                             <p>
-                                We get a year from the user and convert into a decade. For example, if the user wanted to see a movie in 2011, we recommend movies from 2010 to 2019. 
-                                Because, here also we have assumed that the user would like to watch a movie within the decade of the preferred year.
+                                We get a year from the user and convert into a decade. We did this to increase the chance that the input results in a match. 
+                                For example, if the user wanted to see a movie from 2011, we recommend movies from 2010 to 2019. Because, here we have also assumed that the user would like to 
+                                watch a movie within the decade of the preferred year and are not interested in a specific year.
                             </p>
                         </li>
-                        <li>How to run the algorithm continuously?
+                        <li><b>How to make sure the user gets a recommendation?</b>
                             <p>
-                                We wanted to validate user input and print out user friendly messages and continuously run the algorithm without ending abruptly. 
-                                We figured this by using loops, boolean operators combined with proper error handling. We allow the user to choose and end the algorithm.
-
+                                We wanted to validate user input and print out user friendly messages and continuously run the algorithm so that the user could get to the end without it ending abruptly. 
+                                We solved this by implementing a loop which is calling  the main function as long as the user does not decide to end the program. 
+                                For instance, when the algorithm asks the user to enter number (1,2,3), and if the user entered a different number (int) or a letter (string), we print “"Wrong input, Please select 1, 2, or 3" and ask for a new input again. 
+                                We are clearly stating the options and expected input within each question of the algorithm to minimize errors that otherwise might be caused by the user. We also allow the user to choose and end the algorithm.
                             </p>
                         </li>
                     </ol>
@@ -234,139 +240,33 @@ def time_convert(time):
 
 main()
                     </code></pre>
-                        <!-- <ol>
-                            <li>Load the dataset.</li>
-                            <li>Print welcome message.</li>
-                            <li>Start the loop.</li>
-                            <li>Get user input.
-                                <ul>
-                                    <li>1 for to get a movie based on preference</li>
-                                    <li>2 for to get a random movie recommendation</li>
-                                    <li>3 for to exit the program</li>
-                                </ul>
-                                
-                            </li>
-                            <li>If the user enter 1:</li>
-                            <li>
-                                <ul>
-                                    <li>Get a user input for a Genre </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>Select movies for matching Genre from dataset and assign to a new dataframe.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>Get a user input for time in minutes.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>Add +10 and -10 mintes to the entered time.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>Select movies for matching time range from new dataframe.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>Get a user input for year.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>Select movies for matching year from new dataframe.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>Combine results from step 10 and 12 and assigned to final dataframe.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>If the final dataframe is empty:</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li><ul>
-                                        <li>
-                                            Print message ("No movie is found")
-                                        </li>
-                                    </ul></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>Else:</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li><ul>
-                                        <li>
-                                            Print final dataframe
-                                        </li>
-                                    </ul></li>
-                                </ul>
-                            </li>
-                            <li>If the user enter 2:</li>
-                            <li>
-                                <ul>
-                                    <li>Randomly select and print two movies from dataset. </li>
-                                </ul>
-                            </li>
-                            <li>If the user enter 3:</li>
-                            <li>
-                                <ul>
-                                    <li>Print Goodbye message and exit the loop. </li>
-                                </ul>
-                            </li>
-                            <li>Else (user enter wrong input):</li>
-                            <li>
-                                <ul>
-                                    <li>Print an error message and go to step 3. </li>
-                                </ul>
-                            </li>
-                        </ol>     -->
-                    
-                <!-- </div> -->
-
                 <h2>Limitations</h2>
                 <p>
                     <ul>
                         <li>
                         <p>
-                            In this algorithm, if the user enter multiple values as the input for Genre (ex: Action, Drama),
-                            program will not work. We have designed it to take only one string value (ex: Drama).
+                            When developing the algorithm we did not make use of concepts like information hiding discussed in chapter 7 in Computer Science Illuminated by Nell Dale and John Lewis. 
+                            Instead we developed the algorithm to fit the dataset and also modified the dataset to suit the algorithm. 
+                            This means that the algorithm is not as general purpose as it could have been and if the dataset were to be exchanged for a different one the algorithm would most likely break.
                         </p>  
                         </li>
                         <li>
                             <p>
-                            We ask user to enter time. We display lowest and highest duration of movies anticipating
-                            user will not enter a higher number that will fall out of range of Runtime. We validate for lowerest duration. Ideally, we 
-                            should also validate the input agaist highest limit of Runtime. However, we decided to not to make algorithm 
-                            unnecessarily long.
+                            If the user enters multiple values as the input for Genre (ex: Action, Drama), the algorithm will not work. 
+                            We have designed it to take only one string value (ex: Drama).
                             </p>
                         </li>
                         <li><p>
-                            Currently the way the algorithm works is that we only display one result based on certain inputs 
-                            which means that there are going to be a lot of movies in the database that the user is not going 
-                            to find using the algorithm because they might be too generic or show up lower in the already sorted (by IMDB rating).
+                            When asking the user for the time input, we display the lowest and highest duration of movies anticipating that the user will not enter a higher number than 321 (+10) that will fall out of range of Runtime. 
+                            If the user has “too much time” they won't find a result that matches and will get “Sorry no movie found”. 
+                            A clear improvement point here is that if a user has enough time to watch 2 or more movies they should be recommended multiple movies. We do, however, validate for the lowest duration.
                         </p>
                         </li>
                         <li>
                             <p>
-                            If the user wanted to get a random movie recommendation, it would never produce the same movie output twice. 
-                            This could be both a good and bad feature. It is good if the user has already watched the displayed movie. 
-                            It is bad if the user wants to get the same movie recommended.
+                            If the user wanted to get a random movie recommendation, it would never produce the same movie output twice. This could be both a good and bad feature. 
+                            It is good if the user has already watched the displayed movie. It is bad if the user wants to get the same movie recommended.
                             </p>
-                            
                         </li>
                     </ul>    
             </div>
