@@ -54,7 +54,8 @@ def movie_recommender():
          genre = input('''
         Which genre are you looking for?
         \n
-        We have these genres to choose from: Action, Adventure, Animation, Biography, Crime, Comedy, Drama, Fantasy, \n
+        We have these genres to choose from: \n
+        Action, Adventure, Animation, Biography, Crime, Comedy, Drama, Fantasy, \n
         Film-Noir, History, Horror, Music, Musical, Mystery, Romance, Sci-fi, Sport, Thriller, War, Western
 
         ''').strip().lower() # we convert the input to lowercase and remove any extra space 
@@ -105,14 +106,15 @@ def get_data(genre, minutes, year):
         # print dataframe
         for _, row in year_df.iterrows():
             print("\n")
+            print("\n")
             print(f'''I think you would enjoy: \n
-            "{row['Series_Title']}" by {row['Director']} 
-            Duration of {time_convert(int(row['Runtime']))}  minutes
-            starring {', '.join(row['Stars'])}. 
-            From the year {row['Released_Year']}, and of the genres {', '.join(row['Genre'])},
-            and its got {row['IMDB_Rating']}, on IMDB! 
-            Here is the overview: 
+            "{row['Series_Title']}" 
+            {row['Released_Year']} | {time_convert(int(row['Runtime']))}\n
+            IMDB Rating: {row['IMDB_Rating']} ({', '.join(row['Genre'])}) \n
+            Overview:
             {row['Overview']}
+            Director: {row['Director']} 
+            Stars: {', '.join(row['Stars'])}. 
             \n''')
         main()
 
@@ -125,6 +127,7 @@ def random_movie():
             "{row['Series_Title']}" 
             {row['Released_Year']} | {time_convert(int(row['Runtime']))}\n
             IMDB Rating: {row['IMDB_Rating']} ({', '.join(row['Genre'])}) \n
+            Overview:
             {row['Overview']}
             Director: {row['Director']} 
             Stars: {', '.join(row['Stars'])}. 
