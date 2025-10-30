@@ -40,7 +40,7 @@ def main():
 def movie_recommender():
     # we get and store user inputs
     minutes = int(input('''
-        Exciting! How much time(minutes) do you have to watch the movie?
+        Please write a number corresponding to the amount of minutes you have to watch the movie. 
         The shortest movie we have is 45 minutes and the longest 321 minutes.
         \n
         ''')) 
@@ -61,8 +61,8 @@ def movie_recommender():
         ''').strip().lower() # we convert the input to lowercase and remove any extra space 
 
          year = int(input('''
-        Great! From which decade would you like the movie to be from?
-        We have movies from the 1920s to the 2020s.
+        Great! From which decade would you like the movie to be from? 
+        Please write a year between 1920 and 2020 to chose a decade.
         \n
         '''))
        
@@ -102,7 +102,7 @@ def get_data(genre, minutes, year):
         main()
     else:
         # get only the first row
-        year_df = year_df.head(1)
+        year_df = year_df.sample(1)
         # print dataframe
         for _, row in year_df.iterrows():
             print("\n")
