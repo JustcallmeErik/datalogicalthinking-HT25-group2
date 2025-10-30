@@ -12,6 +12,7 @@ Pandas installed
 The examples below will be done in VS code but feel free to use whatever IDE you are comfortable with.
 
 To download the repository to your VS code you can open a new folder with VS code and press “Clone Git Repository” and then simply paste the url from github into the searchbar at the top.
+<img width="1215" height="513" alt="image" src="https://github.com/user-attachments/assets/afc2b0b3-75dd-44ea-b971-57eed3623704" />
 
 Once you have done this and have all the files in your IDE you will need to download pandas.
 To do this you can open up a terminal with powershell and paste the following code:
@@ -22,6 +23,7 @@ You now have pandas!
 
 Finally if you don't already have a python debugger go to "extensions" 
 Search for “python” in the search bar and get “Python” and “Python Debugger” by Microsoft. That is what we used.
+<img width="646" height="621" alt="image" src="https://github.com/user-attachments/assets/67382954-4b05-4d24-b6d3-75ca135156b1" />
 
 We hope these steps were helpful and that you enjoy using the algorithm!
 
