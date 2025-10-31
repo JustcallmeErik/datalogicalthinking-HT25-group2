@@ -34,6 +34,12 @@ Finally if you don't already have a python debugger go to "extensions"
 Search for “python” in the search bar and get “Python” and “Python Debugger” by Microsoft. That is what we used.
 <img width="646" height="621" alt="image" src="https://github.com/user-attachments/assets/67382954-4b05-4d24-b6d3-75ca135156b1" />
 
+Once you have downloaded the python debugger click on "theMovieRecommenderAlgorithm.py" in the "Scripts" folder and then click on the run button in the top right corner. 
+Then click "Run Python File". This should run the file/ algorithm and you should be able to test it out by yourself by sending inputs through the console.
+
+<img width="1860" height="984" alt="image" src="https://github.com/user-attachments/assets/6f6a5d1d-e65f-401b-a902-cbf6176ff715" />
+
+
 We hope these steps were helpful and that you enjoy using the algorithm!
 
 Best regards,
