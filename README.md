@@ -1,7 +1,7 @@
 [![View Git Checklist](https://img.shields.io/badge/View-Git_Checklist-blue)](git-checklist.md)
-[![View Algorithm](https://img.shields.io/badge/View-Algorithm-red)](theMovieRecommenderAlgorithm.py)
-[![View Structured JSON](https://img.shields.io/badge/View-Structured_JSON-darkgreen)](structured.json)
-[![View Original CSV](https://img.shields.io/badge/View-Original_CSV-purple)](imdbTop1000.csv)
+[![View Algorithm](https://img.shields.io/badge/View-Algorithm-red)](scripts/theMovieRecommenderAlgorithm.py)
+[![View Structured JSON](https://img.shields.io/badge/View-Structured_JSON-darkgreen)](data/structured.json)
+[![View Original CSV](https://img.shields.io/badge/View-Original_CSV-purple)](data/imdbTop1000.csv)
 
 
 # datalogicalthinking-HT25-group2
