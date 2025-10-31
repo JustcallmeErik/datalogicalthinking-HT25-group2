@@ -1,3 +1,5 @@
+[![View Git Checklist](https://img.shields.io/badge/View-Git_Checklist-blue)](git-checklist.md)
+
 # datalogicalthinking-HT25-group2
 
 Hello and welcome to this project! The purpose of this file is to give some guidance in how to access and use the movie recommender algorithm and what prerequisites you will need to have.
