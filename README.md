@@ -1,5 +1,5 @@
 [![View Git Checklist](https://img.shields.io/badge/View-Git_Checklist-blue)](git-checklist.md)
-[![View Structured JSON](https://img.shields.io/badge/View-Structured JSON-green)](structured.json)
+[![View Structured JSON](https://img.shields.io/badge/View-Structured_JSON-green)](structured.json)
 [![View Algorithm](https://img.shields.io/badge/View-Algorithm-red)](theMovieRecommenderAlgorithm.py)
 
 # datalogicalthinking-HT25-group2
