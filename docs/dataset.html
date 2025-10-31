@@ -82,8 +82,8 @@
 
 <p>
 In the output above, we can see that there were several mismatched datatypes in the original CSV. For example, “Runtime_Minutes” being a string instead of an int. 
-Furthermore, the property “Genre” contained several values within its column and “Stars” were stored in numerous columns. Several properties were considered irrelevant for the 
-algorithm, including; “certificate”, “meta-score”, “number of votes”, and “gross”. The properties also did not have a purpose to fulfill for our algorithm and were deleted to not 
+Furthermore, the property “Genre” contained several values within its column and “Stars” were stored in numerous columns. Several keys were considered irrelevant for the 
+algorithm, including; “certificate”, “meta-score”, “number of votes”, and “gross”. The keys also did not have a purpose to fulfill for our algorithm and were deleted to not 
 store unused values and use unnecessary storage
 </p>
 <h3>Data serialization</h3>
@@ -96,7 +96,7 @@ and translate the dataset to JSON by implementing functions in python. We conver
 r row in read:
 genres = [g.strip() for g in row[3].split(",")]
 stars = [g.strip() for g in row[7].split(",")]
-to get the values in the properties to be outputted in json as an array.
+to get the properties to be outputted in json as an array.
 We also used:
  data.append ( { "Released_Year": int(row[1]),
                      "Runtime": int(row[2]),
@@ -104,7 +104,7 @@ We also used:
 </code></pre>
 to translate the properties that needed to be floats and ints. Another benefit of translating to JSON is the potential to connect the algorithm with an API that returns 
 JSON files which would make it easier to get real-time updated movie recommendations. After the data serialization the remaining result was a JSON file still containing the 
-1000 movie objects and every object contained 8 properties, consisting of datatypes: int, str, floats and arrays.
+1000 movie objects and every object contained 8 keys, consisting of datatypes: int, str, floats and arrays.
 </p>
 <h3>This is the JSON structure that we settled on:</h3>
 <div class="cblock">

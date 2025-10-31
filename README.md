@@ -4,6 +4,9 @@ Hello and welcome to this project! The purpose of this file is to give some guid
 
 To read more about this project we suggest looking at the github pages page where you will be able to read about the considerations, limitations and challenges.
 
+>[!NOTE]
+> The dataset used in this project is gathered from IMDB. Although IMDB claims on their website that they have an unbiased rating system, we do not have access to their algorithm and can’t validate the reliability of this claim. We want you to be aware of potential biases that exist within our algorithm. Research has shown that in general the rating "community" has a strong male perspective as men tend to write more movie reviews than women. As an example from our dataset we can see that all of the top 10 most occurring directors are male. You can read more about this on the Dataset page.
+ 
 To run this application you will need to have:
 An IDE that can read python and JSON files
 A Python debugger
